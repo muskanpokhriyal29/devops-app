@@ -25,7 +25,7 @@ jobs:
           aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 216874796831.dkr.ecr.eu-central-1.amazonaws.com
 
       - name: Build Docker Image
-        run: docker build -t devops-app:latest .
+        run: docker build -t devops-app:latest -f app/Dockerfile app/
 
       - name: Tag Image
         run: docker tag devops-app:latest 216874796831.dkr.ecr.eu-central-1.amazonaws.com/devops-app-repo:latest
